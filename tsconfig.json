@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "importHelpers": true, // 确保启用 importHelpers
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["src/**/*", ".eslintrc.js"],
+}

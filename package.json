@@ -1,0 +1,42 @@
+{
+  "name": "laog",
+  "version": "0.0.1",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "umd": "dist/index.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -cw",
+    "build": "rollup -c"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "戈德斯文",
+  "license": "ISC",
+  "sideEffects": false,
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "consola": "^3.2.3",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.2",
+    "rollup": "^4.28.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.1",
+    "typescript": "^5.7.2"
+  }
+}
