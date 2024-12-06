@@ -4,7 +4,7 @@ import { LaogOptions, LogLevel, LogType } from './types';
 import { LogLevels } from './constants';
 import { getLogStyle, timeStampsStyles } from './styles';
 
-consola.info('%c hello', 'color: red;');
+consola.info('%c hello', 'color: red; background-color: blue;');
 consola.warn('%c hello', 'color: red;');
 consola.error('%c hello', 'color: red;');
 

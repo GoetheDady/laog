@@ -34,21 +34,6 @@ coverage/
 # Parcel-bundler cache
 .cache/
 
-# Next.js build output
-.next/
-
-# Nuxt.js build output
-.nuxt/
-
-# Vuepress build output
-.vuepress/dist
-
-# SvelteKit build output
-.svelte-kit/
-
-# Storybook build output
-.out/
-
 # Static site generators
 public/
 

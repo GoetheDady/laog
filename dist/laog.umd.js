@@ -536,7 +536,7 @@
 	    return LogStyles[type] || '';
 	}
 
-	consola.info('%c hello', 'color: red;');
+	consola.info('%c hello', 'color: red; background-color: blue;');
 	consola.warn('%c hello', 'color: red;');
 	consola.error('%c hello', 'color: red;');
 	// 处理日志等级方法
