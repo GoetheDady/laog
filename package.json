@@ -1,22 +1,38 @@
 {
   "name": "laog",
-  "version": "0.0.1",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "umd": "dist/index.umd.js",
+  "version": "1.0.0",
+  "description": "A lightweight logging library for browsers with enhanced styles and extensibility.",
+  "main": "dist/laog.cjs.js",
+  "module": "dist/laog.esm.js",
+  "umd": "dist/laog.umd.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "rollup -cw",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
-  "type": "module",
-  "keywords": [],
-  "author": "戈德斯文",
-  "license": "ISC",
-  "sideEffects": false,
+  "keywords": [
+    "log",
+    "logging",
+    "browser",
+    "console",
+    "stylish"
+  ],
+  "author": "戈德斯文 <mrgoehte0126@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GoetheDady/laog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GoetheDady/laog/issues"
+  },
+  "homepage": "https://github.com/GoetheDady/laog#readme",
   "dependencies": {
+    "consola": "^3.2.3",
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21"
   },
@@ -26,7 +42,6 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
-    "consola": "^3.2.3",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
@@ -38,5 +53,6 @@
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.1",
     "typescript": "^5.7.2"
-  }
+  },
+  "sideEffects": false
 }

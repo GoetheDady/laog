@@ -1,5 +1,4 @@
 import Laog from './laog';
-import { LaogOptions } from './types';
 
 // 创建一个默认实例
 const defaultLaogInstance = new Laog();
