@@ -1,12 +1,7 @@
 import dayjs from 'dayjs';
-import { consola } from 'consola';
 import { LaogOptions, LogLevel, LogType } from './types';
 import { LogLevels } from './constants';
 import { getLogStyle, timeStampsStyles } from './styles';
-
-consola.info('%c hello', 'color: red; background-color: blue;');
-consola.warn('%c hello', 'color: red;');
-consola.error('%c hello', 'color: red;');
 
 // 处理日志等级方法
 function handleLogLevel(level: number): LogLevel {
