@@ -23,7 +23,7 @@ yarn add laog
 
 ## 使用示例
 
-```javascript
+```typescript
 import Laog from 'laog';
 
 // 创建一个默认实例
@@ -40,7 +40,7 @@ logger.error('这是一个错误日志');
 
 ## 配置选项
 
-```javascript
+```typescript
 interface LaogOptions {
   level: LogLevel; // 日志级别
   showTimeStamps: boolean; // 是否显示时间戳
@@ -48,7 +48,7 @@ interface LaogOptions {
 ```
 
 ## 日志级别
-```javascript
+```typescript
 type LogLevel = 1 | 2 | 3 | 4;
 type LogType = 'log' | 'info' | 'warn' | 'error';
 ```
