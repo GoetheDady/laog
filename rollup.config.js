@@ -5,8 +5,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import terser from '@rollup/plugin-terser';
 import del from 'rollup-plugin-delete';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-console.log(process.env.NODE_ENV);
 const isDev = process.env.NODE_ENV === 'development';
 
 export default {
@@ -33,6 +33,13 @@ export default {
       mangle: false, // 不混淆代码
     }),
     del({ targets: 'dist/*' }), // 在构建前删除 dist 目录
+    visualizer({
+      filename: './stats.html', // 输出 HTML 文件名
+      title: 'Laog Bundle Analysis', // 页面标题
+      open: true, // 自动打开分析页面
+      gzipSize: true, // 显示 gzip 压缩大小
+      brotliSize: true, // 显示 brotli 压缩大小
+    }),
     isDev &&
       server({
         open: true,

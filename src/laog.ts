@@ -2,9 +2,9 @@ import dayjs from 'dayjs';
 import { LaogOptions, LogLevel, LogType } from './types';
 import { LogLevels } from './constants';
 import { getLogStyle, timeStampsStyles, emojiStyles } from './styles';
-import { consola } from 'consola';
+import rfdc from 'rfdc';
 
-consola.info('Hello, Laog!');
+const _cloneDeep = rfdc();
 
 // 处理日志等级方法
 function handleLogLevel(level: number): LogLevel {
@@ -126,7 +126,15 @@ class Laog {
     if (!this.shouldLog(type)) {
       return;
     }
-    const { message, styles, rest } = this.formatLogMessage(type, args);
+    // 对参数进行深拷贝
+    const clonedArgs = args.map(arg => {
+      if (typeof arg === 'object' && arg !== null) {
+        return _cloneDeep(arg);
+      }
+      return arg;
+    });
+    
+    const { message, styles, rest } = this.formatLogMessage(type, clonedArgs);
     if (this.showCallStack) {
       console.groupCollapsed(message, ...styles, ...rest);
       console.log(this.getCallStack());
