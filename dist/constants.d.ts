@@ -13,3 +13,4 @@ import { LogType } from './types';
  * @property {number} silent - 静默日志级别，数值为正无穷大。
  */
 export declare const LogLevels: Record<LogType | string, number>;
+export declare const LOG_EMOJI_MAP: Record<LogType, string>;

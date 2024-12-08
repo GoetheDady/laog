@@ -21,3 +21,11 @@ export const LogLevels: Record<LogType | string, number> = {
   error: 4,
   silent: Number.POSITIVE_INFINITY,
 };
+
+
+export const LOG_EMOJI_MAP: Record<LogType, string> = {
+  log: '📝',
+  info: 'ℹ️',
+  warn: '⚠️',
+  error: '❌'
+};
