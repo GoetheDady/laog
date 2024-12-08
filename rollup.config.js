@@ -3,6 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import server from 'rollup-plugin-serve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
+import terser from '@rollup/plugin-terser';
+import del from 'rollup-plugin-delete';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -10,22 +12,8 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: 'dist/laog.cjs.js',
-      format: 'cjs',
-      sourcemap: true,
-      exports: 'named',
-    },
-    {
       file: 'dist/laog.esm.js',
       format: 'esm',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/laog.umd.js',
-      format: 'umd',
-      name: 'Laog',
-      sourcemap: true,
-      exports: 'named',
     },
   ],
   plugins: [
@@ -40,6 +28,8 @@ export default {
       declarationDir: 'dist', // 类型声明输出目录
       outDir: 'dist', // 输出目录
     }),
+    terser(), // 使用 terser 压缩代码
+    del({ targets: 'dist/*' }), // 在构建前删除 dist 目录
     isDev &&
       server({
         open: true,
@@ -56,4 +46,5 @@ export default {
     include: 'src/**', // 只监听 src 目录下的文件变动
     clearScreen: true, // 每次重新构建时清空控制台
   },
+  external: ['dayjs'],
 };
