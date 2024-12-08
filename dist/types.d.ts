@@ -3,4 +3,6 @@ export type LogType = 'log' | 'info' | 'warn' | 'error';
 export interface LaogOptions {
     level: LogLevel;
     showTimeStamps: boolean;
+    timeStampsFormat: string;
+    showCallStack: boolean;
 }

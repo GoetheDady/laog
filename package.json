@@ -2,18 +2,19 @@
   "name": "laog",
   "version": "1.0.2",
   "description": "A lightweight logging library for browsers with enhanced styles and extensibility.",
-  "main": "dist/laog.cjs.js",
   "module": "dist/laog.esm.js",
-  "umd": "dist/laog.umd.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "README.md"
   ],
   "scripts": {
-    "dev": "rollup -cw",
+    "dev": "NODE_ENV=development rollup -cw",
     "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "size": "size-limit"
   },
   "keywords": [
     "log",
@@ -32,6 +33,12 @@
     "url": "https://github.com/GoetheDady/laog/issues"
   },
   "homepage": "https://github.com/GoetheDady/laog#readme",
+  "size-limit": [
+    {
+      "path": "dist/laog.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "dependencies": {
     "consola": "^3.2.3",
     "dayjs": "^1.11.13",
@@ -42,6 +49,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
+    "@size-limit/preset-small-lib": "^11.1.6",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
     "eslint": "^8.57.1",
@@ -55,6 +63,7 @@
     "rollup-plugin-delete": "^2.1.0",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.1",
+    "size-limit": "^11.1.6",
     "typescript": "^5.7.2"
   },
   "sideEffects": false

@@ -6,6 +6,8 @@ export const commonStyles =
 export const timeStampsStyles =
   'color: #6c757d; font-size: 12px; font-style: italic;';
 
+export const emojiStyles = 'font-size: 16px;';
+
 const LogStyles: Record<LogType | string, string> = {
   verbose: 'color: #6c757d',
   log: `color: #fff; background-color: #66b2ff; ${commonStyles}`, // 修改背景色
