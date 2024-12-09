@@ -1,6 +1,6 @@
 {
   "name": "laog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A lightweight logging library for browsers with enhanced styles and extensibility.",
   "module": "dist/laog.esm.js",
   "types": "dist/index.d.ts",
