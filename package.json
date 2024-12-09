@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:GoetheDady/laog.git"
+    "url": "git+ssh://git@github.com/GoetheDady/laog.git"
   },
   "bugs": {
     "url": "https://github.com/GoetheDady/laog/issues"
