@@ -1,6 +1,6 @@
 # Laog 🪵
 
-[English](./README_EN.md) | 简体中文
+[English](./docs/README_EN.md) | 简体中文
 
 一个轻量级的浏览器日志库，具有增强的样式和可扩展性。✨
 

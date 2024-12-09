@@ -1,6 +1,6 @@
 # Laog 🪵
 
-English | [简体中文](./README.md)
+English | [简体中文](../README.md)
 
 A lightweight browser logging library with enhanced styling and extensibility. ✨
 
