@@ -2,10 +2,7 @@ import dayjs from 'dayjs';
 import { LaogOptions, LogLevel, LogType } from './types';
 import { LogLevels, LOG_EMOJI_MAP } from './constants';
 import { getLogStyle, timeStampsStyles, emojiStyles } from './styles';
-import rfdc from 'rfdc';
-
-const _cloneDeep = rfdc();
-
+import { deepClone } from 'dkopy'
 /**
  * 根据日志级别处理并返回对应的日志级别。
  *
@@ -42,31 +39,6 @@ class Laog {
   }
 
   /**
-   * 格式化日志消息，添加时间戳、表情符号和样式
-   * @param type - 日志类型
-   * @param args - 日志参数数组
-   * @returns 格式化后的消息对象，包含消息文本、样式数组和剩余参数
-   */
-  private formatLogMessage(type: LogType, args: any[]) {
-    const parts = [];
-    const styles = [];
-
-    if (this.showTimeStamps) {
-      parts.push(`%c${dayjs().format(this.timeStampsFormat)}`);
-      styles.push(timeStampsStyles);
-    }
-
-    parts.push(`%c${LOG_EMOJI_MAP[type]}`, `%c[${type.toUpperCase()}]`, '%c');
-    styles.push(emojiStyles, getLogStyle(type), '');
-
-    return {
-      message: `${parts.join(' ')} ${args[0]}`,
-      styles,
-      rest: args.slice(1)
-    };
-  }
-
-  /**
    * 获取当前的调用堆栈信息
    * @returns 格式化后的调用堆栈字符串
    */
@@ -87,19 +59,14 @@ class Laog {
     return ['Call stack:', ...stackLines].join('\n');
   }
 
-  /**
-   * 打印日志到控制台
-   * @param message - 格式化后的消息
-   * @param styles - 样式数组
-   * @param rest - 剩余参数
-   */
-  private printLog(message: string, styles: string[], rest: any[]) {
+
+  private printLog(...args: any[]) {
     if (this.showCallStack) {
-      console.groupCollapsed(message, ...styles, ...rest);
+      console.groupCollapsed(...args);
       console.log(this.getCallStack());
       console.groupEnd();
     } else {
-      console.log(message, ...styles, ...rest);
+      console.log(...args);
     }
   }
 
@@ -110,13 +77,38 @@ class Laog {
    */
   private logMessage(type: LogType, args: any[]) {
     if (!this.shouldLog(type)) return;
+    let message = '';
+    let styles = [];
 
-    const safeArgs = args.map(arg => 
-      typeof arg === 'object' && arg !== null ? _cloneDeep(arg) : arg
-    );
-    const { message, styles, rest } = this.formatLogMessage(type, safeArgs);
-    
-    this.printLog(message, styles, rest);
+    const safeArgs = args.map(arg => {
+      return typeof arg === 'object' && arg !== null ? deepClone(arg) : arg
+    });
+
+    const badge = `%c${LOG_EMOJI_MAP[type]} %c[${type.toUpperCase()}]`;
+    const badgeStyle = [emojiStyles, getLogStyle(type)];
+
+    message += badge;
+    styles.push(...badgeStyle);
+
+    if (this.showTimeStamps) {
+      message = `%c${dayjs().format(this.timeStampsFormat)} ` + badge;
+      styles.unshift(timeStampsStyles);
+    }
+
+    if (typeof safeArgs[0] === 'string') {
+      this.printLog(
+        `${message}%c ${safeArgs[0]}`,
+        ...styles,
+        '',
+        ...safeArgs.slice(1)
+      )
+    } else {
+      this.printLog(
+        message,
+        ...styles,
+        ...safeArgs,
+      )
+    }
   }
 
   /**

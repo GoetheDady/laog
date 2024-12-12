@@ -2,7 +2,7 @@
   "name": "laog",
   "version": "1.0.6",
   "description": "A lightweight logging library for browsers with enhanced styles and extensibility.",
-  "module": "dist/laog.esm.js",
+  "module": "dist/laog.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "files": [
@@ -40,9 +40,8 @@
     }
   ],
   "dependencies": {
-    "consola": "^3.2.3",
     "dayjs": "^1.11.13",
-    "rfdc": "^1.4.1"
+    "dkopy": "^0.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
